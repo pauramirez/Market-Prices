@@ -7,6 +7,8 @@ class StockWrapper extends Component {
         super(props);
 
         this.state = {
+            marketState: "JPM",
+            timeState: "TIME_SERIES_DAILY",
             isLoading: true,
             error: null,
             results: [],
@@ -15,12 +17,22 @@ class StockWrapper extends Component {
         this.fetchProfileStockInfo = this.fetchProfileStockInfo.bind(this);
     }
 
-    componentWillMount() {
-        this.fetchProfileStockInfo();
+    updateEnterprise(event) {
+        this.setState({ marketState: event.target.value });
     }
 
+
     fetchProfileStockInfo() {
-        fetch('/api/stocks/portafolio', { method: 'POST' })
+        fetch("/api/stocks/portafolio", {
+            method: 'POST',
+            headers: new Headers({
+                'Content-Type': 'application/json',
+            }),
+            body: JSON.stringify({
+                market: this.state.marketState,
+                time: this.state.timeState,
+            })
+        })
             .then(res => res.json())
             .then(json => {
                 if (json.success) {
@@ -37,6 +49,7 @@ class StockWrapper extends Component {
                 }
             });
     }
+
     render() {
 
         const {
@@ -48,7 +61,15 @@ class StockWrapper extends Component {
         if (isLoading) {
             return (
                 <div>
-                    <p>Loading...</p>
+                    <select onChange={this.updateEnterprise.bind(this)}>
+                        <option name="JPM" value="JPM" >JP MORGAN </option>
+                        <option name="MSFT" value="MSFT" >MICROSOFT </option>
+                        <option name="AAPL" value="AAPL" >APPLE </option>
+                        <option name="GOOG" value="GOOG" >GOOGLE </option>
+                        <option name="AMZN" value="AMZN" >AMAZON </option>
+                        <option name="NKE" value="NKE" >NIKE </option>
+                    </select>
+                    <button onClick={this.fetchProfileStockInfo}>SUBMIT </button>
                 </div>
             );
         }
@@ -66,7 +87,16 @@ class StockWrapper extends Component {
 
         return (
             <div>
-                <p>Profile</p>
+                <select onChange={this.updateEnterprise.bind(this)}>
+                    <option name="JPM" value="JPM" >JP MORGAN </option>
+                    <option name="MSFT" value="MSFT" >MICROSOFT </option>
+                    <option name="AAPL" value="AAPL" >APPLE </option>
+                    <option name="GOOG" value="GOOG" >GOOGLE </option>
+                    <option name="AMZN" value="AMZN" >AMAZON </option>
+                    <option name="NKE" value="NKE" >NIKE </option>
+                </select>
+                <button onClick={this.fetchProfileStockInfo}>SUBMIT </button>
+                <p>Stock Fluctuations</p>
                 {
                     results.map(result => <StockInfo data={result} />)
                 }

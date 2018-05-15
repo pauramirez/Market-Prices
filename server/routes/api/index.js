@@ -1,13 +1,16 @@
 import { Meteor } from 'meteor/meteor';  
 import express from 'express';
+import bodyParser from 'body-parser';
 const request = require('superagent');
+
 export function setupApi() {  
   const app = express();
+  app.use(bodyParser());
   
 
   app.post('/api/stocks/portafolio', function (req, res, next) {
     const apiKey = 'UW88YO72CML3PNC9';
-    const tickers = ['MSFT'];
+    const tickers = [''];
 
     let completed = 0;
     const results = [];
@@ -16,8 +19,8 @@ export function setupApi() {
         const ticker = tickers[i];
         request
             .get('https://www.alphavantage.co/query')
-            .query({ function: 'TIME_SERIES_DAILY' })
-            .query({ symbol: ticker })
+            .query({ function: req.body.time })
+            .query({ symbol: req.body.market })
             .query({ apikey: apiKey })
             .then((response) => {
                 completed += 1;

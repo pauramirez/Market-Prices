@@ -38,9 +38,9 @@ const StockInfo = (props) => {
 
     return (
         <div>
-            <p>{ticker}</p>;
-            <p>{lastRefreshed}</p>;
-            <p>{timezone}</p>;
+            <p>Enterprise: {ticker}</p>
+            <p>Last Time Refresed: {lastRefreshed}</p>
+            <p>Timezone: {timezone}</p>
             <br />
 
             <LineChart width={600} height={300} data={rows}
