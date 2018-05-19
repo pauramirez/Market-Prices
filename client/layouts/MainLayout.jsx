@@ -5,7 +5,7 @@ import AccountsUI from '../AccountsUI';
 export const MainLayout = ({ content }) => (
     <div className="main-layout">
         <header>
-            <h2> Stock Twitter</h2>
+            <h2>Market Price</h2>
             <nav>
                 <a href="/"> Comentarios </a>
                 <a href="/Grafica"> Grafica </a>
@@ -19,7 +19,9 @@ export const MainLayout = ({ content }) => (
         </main>
 
         <footer>
-            MADE BY PAULA RAMIREZ
+        <br/><br/>
+        <hr/>
+            <p>Made by <a href="https://pauramirez.github.io/Paula-Ramirez/">Paula Ramirez</a> with ❤️🖥</p>
         </footer>
     </div>
 )

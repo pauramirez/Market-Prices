@@ -39,7 +39,7 @@ const StockInfo = (props) => {
     return (
         <div>
             <p>Enterprise: {ticker}</p>
-            <p>Last Time Refresed: {lastRefreshed}</p>
+            <p>Last time refreshed: {lastRefreshed}</p>
             <p>Timezone: {timezone}</p>
             <br />
 
@@ -52,8 +52,8 @@ const StockInfo = (props) => {
                 <Legend />
                 <Line type="monotone" dataKey="open" stroke="#8884d8" dot={false} />
                 <Line type="monotone" dataKey="high" stroke="#82ca9d" dot={false} />
-                <Line type="monotone" dataKey="low" stroke="#B4045F" dot={false} />
-                <Line type="monotone" dataKey="close" stroke="#868A08" dot={false} />
+                <Line type="monotone" dataKey="low" stroke="#ff9b68" dot={false} />
+                <Line type="monotone" dataKey="close" stroke="#f077ba" dot={false} />
             </LineChart>
         </div>
     )

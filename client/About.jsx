@@ -7,7 +7,7 @@ export default class About extends Component{
             <div>
                 <h1> About Us </h1>
 
-                <p>Somos nostros  </p>
+                <p>This page is under construction... </p>
                 </div>
         )
     }

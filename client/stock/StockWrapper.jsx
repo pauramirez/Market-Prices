@@ -68,8 +68,8 @@ class StockWrapper extends Component {
                         <option name="GOOG" value="GOOG" >GOOGLE </option>
                         <option name="AMZN" value="AMZN" >AMAZON </option>
                         <option name="NKE" value="NKE" >NIKE </option>
-                    </select>
-                    <button onClick={this.fetchProfileStockInfo}>SUBMIT </button>
+                    </select> <br/> <br/>
+                    <button onClick={this.fetchProfileStockInfo}>Submit </button>
                 </div>
             );
         }
@@ -96,7 +96,7 @@ class StockWrapper extends Component {
                     <option name="NKE" value="NKE" >NIKE </option>
                 </select>
                 <button onClick={this.fetchProfileStockInfo}>SUBMIT </button>
-                <p>Stock Fluctuations</p>
+                <h4>Stock Fluctuations</h4>
                 {
                     results.map(result => <StockInfo data={result} />)
                 }
