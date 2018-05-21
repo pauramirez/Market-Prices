@@ -29,7 +29,7 @@ export function setupApi() {
                 if (completed == tickers.length) 
                 {
                     //all tckers are completed
-
+ //F. Andres Vera: Trata de eliminar la mayoria de log's que tienes. 
                     console.log('completed');
 
                     res.send({
