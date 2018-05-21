@@ -1,6 +1,7 @@
 Meteor.methods({
     addComentario(comentario) {
 
+        //F. Andres Vera: Buena implementacion de seguridad sobre los usuarios no registrados. 
         if (!Meteor.userId()) {
             throw new Meteor.Error("not-authorized")
         }
